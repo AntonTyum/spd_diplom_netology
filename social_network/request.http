@@ -1,0 +1,91 @@
+#User Token : 586fa1fb9ded3da0b7ce4f6c75d974a1864d442a
+#Admin Token : a654b4d67a208111e521d2d7bf26b2ac0ea269df
+
+# получение всех постов
+GET http://localhost:8000/api/posts/
+Content-Type: application/json
+###
+
+# получение поста
+GET http://localhost:8000/api/posts/1/
+Content-Type: application/json
+###
+
+# создание поста user
+POST http://localhost:8000/api/posts/
+Content-Type: application/json
+Authorization: Token 586fa1fb9ded3da0b7ce4f6c75d974a1864d442a
+
+{
+  "text": "Новый пост пользователя."
+}
+###
+
+# создание поста admin
+POST http://localhost:8000/api/posts/
+Content-Type: application/json
+Authorization: Token a654b4d67a208111e521d2d7bf26b2ac0ea269df
+
+{
+  "text": "Пост админа"
+}
+
+###
+
+# удаление поста admin
+DELETE http://localhost:8000/api/posts/7/
+Authorization: Token a654b4d67a208111e521d2d7bf26b2ac0ea269df
+
+###
+
+# удаление поста user
+DELETE http://localhost:8000/api/posts/4/
+Authorization: Token 586fa1fb9ded3da0b7ce4f6c75d974a1864d442a
+
+###
+
+# создание коментариев админ 
+POST http://localhost:8000/api/posts/1/comments/
+Content-Type: application/json
+Authorization: Token a654b4d67a208111e521d2d7bf26b2ac0ea269df
+
+{
+  "text": "Еще один коментарий от админа."
+}
+
+###
+
+# создание коментариев user
+POST http://localhost:8000/api/posts/1/comments/
+Content-Type: application/json
+Authorization: Token 586fa1fb9ded3da0b7ce4f6c75d974a1864d442a
+
+{
+  "text": "Еще один коментарий от user."
+}
+
+###
+
+# лайк посту admin
+POST http://localhost:8000/api/posts/5/likes/
+Content-Type: application/json
+Authorization: Token a654b4d67a208111e521d2d7bf26b2ac0ea269df
+
+###
+
+# лайк посту user
+POST http://localhost:8000/api/posts/5/likes/
+Content-Type: application/json
+Authorization: Token 586fa1fb9ded3da0b7ce4f6c75d974a1864d442a
+
+
+# дизлайк посту admin
+DELETE  http://localhost:8000/api/posts/1/likes/
+Content-Type: application/json
+Authorization: Token a654b4d67a208111e521d2d7bf26b2ac0ea269df
+###
+
+# дизлайк посту user
+DELETE  http://localhost:8000/api/posts/1/likes/
+Content-Type: application/json
+Authorization: Token 586fa1fb9ded3da0b7ce4f6c75d974a1864d442a
